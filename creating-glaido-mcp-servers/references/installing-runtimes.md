@@ -15,14 +15,14 @@ command -v python3 && python3 --version   # only if not using uv
 
 If a check prints nothing, that tool isn't on PATH and needs installing.
 
-## uv — recommended for Python
+## uv - recommended for Python
 
 **Why uv (and why it solves the venv problem):** with plain Python you have to create a virtual
 environment, activate it, `pip install` the right packages, and keep the right Python version
-around — every time, and it breaks in confusing ways. `uv` removes all of that:
+around - every time, and it breaks in confusing ways. `uv` removes all of that:
 
 - `uv run server.py` automatically creates an isolated environment and installs the
-  dependencies from `pyproject.toml` — no manual `venv`, no `activate`, no global package mess.
+  dependencies from `pyproject.toml` - no manual `venv`, no `activate`, no global package mess.
 - uv **also installs Python for you** if a compatible version isn't present, so the user
   doesn't need a separate Python install at all.
 - It's one fast tool instead of `python` + `pip` + `venv` juggling.
@@ -44,7 +44,7 @@ powershell -c "irm https://astral.sh/uv/install.ps1 | iex"
 
 After installing, **restart the terminal** (or `source ~/.zshrc`) so `uv` is on PATH, then
 verify with `uv --version`. To pre-install a Python version explicitly: `uv python install`
-(usually unnecessary — `uv run` fetches one on demand).
+(usually unnecessary - `uv run` fetches one on demand).
 
 ## Node.js (node / npm / npx)
 
@@ -85,14 +85,14 @@ pip install -e .
 ```
 
 …and the `mcp.json` `command` must then point at that venv's Python (an absolute path to
-`.venv/bin/python`), not a bare `python3`. This is more fragile than uv — recommend uv unless
+`.venv/bin/python`), not a bare `python3`. This is more fragile than uv - recommend uv unless
 there's a specific reason not to.
 
 ## The GUI-PATH gotcha (important for Glaido)
 
 Glaido is a desktop (GUI) app. On macOS especially, GUI apps launched from Finder/Dock **do
 not inherit the PATH from your shell config** (`~/.zshrc`, `~/.bashrc`). So a command that
-works in your terminal can still fail inside Glaido with "command not found" — even though it's
+works in your terminal can still fail inside Glaido with "command not found" - even though it's
 "installed."
 
 The robust fix: **use the absolute path to the binary in `mcp.json`** rather than a bare name.

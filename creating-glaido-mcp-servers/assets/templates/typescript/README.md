@@ -1,19 +1,19 @@
-# My Server — Glaido MCP Server
+# My Server - Glaido MCP Server
 
 Local TypeScript MCP server for Glaido, built with `@modelcontextprotocol/sdk` and run via
 Node.
 
 ## Tools
 
-- `search_items` — search items by query (read-only)
-- `delete_item` — delete an item by id (destructive; Glaido asks before running)
+- `search_items` - search items by query (read-only)
+- `delete_item` - delete an item by id (destructive; Glaido asks before running)
 
 _Replace this list with the real tools._
 
 ## Setup
 
 1. Copy `.env.example` to `.env` and fill in your keys:
-   - `SERVICE_API_KEY` — _where to get it_
+   - `SERVICE_API_KEY` - _where to get it_
 2. Install and build (Glaido runs the compiled `dist/`):
    ```bash
    npm install
@@ -21,7 +21,7 @@ _Replace this list with the real tools._
    node dist/index.js
    ```
    It should start and wait silently. Any `console.log` output goes to stdout and will break
-   the connection — use `console.error` instead.
+   the connection - use `console.error` instead.
 
 ## Import into Glaido
 

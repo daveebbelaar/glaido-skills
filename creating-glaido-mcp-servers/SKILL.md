@@ -2,12 +2,12 @@
 name: creating-glaido-mcp-servers
 description: >-
   Build a local MCP server that imports directly into the Glaido desktop app. Use this
-  whenever someone wants to add a tool, capability, or integration to Glaido — scaffold an
+  whenever someone wants to add a tool, capability, or integration to Glaido - scaffold an
   MCP server, write an mcp.json they can import, connect Glaido to a service (Notion, Slack,
   GitHub, Todoist, a custom API, a local script, etc.), or "make Glaido able to do X". Works
   in any language and defaults to Python + FastMCP run via uv. Produces a ready-to-import
   folder with mcp.json, environment setup, and run instructions. Trigger even when the user
-  doesn't say "MCP" — phrases like "make a Glaido tool", "I want Glaido to be able to send
+  doesn't say "MCP" - phrases like "make a Glaido tool", "I want Glaido to be able to send
   Slack messages", "connect Glaido to my database", or "give Glaido access to my API" all
   apply.
 ---
@@ -25,10 +25,10 @@ Glaido runs these servers as **local processes over stdio**. That focus drives e
 below: the server is launched from disk by an absolute path, it talks MCP over stdin/stdout,
 and its secrets live in a local `.env` next to the code.
 
-The user never needs to know anything about Glaido's internals — only how to import the
+The user never needs to know anything about Glaido's internals - only how to import the
 folder and set their keys. Keep your explanations at that level.
 
-## Step 0 — Decide: reuse or build?
+## Step 0 - Decide: reuse or build?
 
 Before writing any code, figure out which situation you're in. This is the single most
 important decision and people often skip it.
@@ -43,7 +43,7 @@ machine actions → there's nothing to reuse. Go to Step 1B.
 If it's ambiguous (e.g. "I want Glaido to manage my tasks"), ask one quick question: are they
 using a known product (reuse) or their own system (build)?
 
-## Step 1A — Reuse path: find an existing server first
+## Step 1A - Reuse path: find an existing server first
 
 When the target is a known service, search before you build. Read
 [references/existing-servers.md](references/existing-servers.md) for where to look and how to
@@ -52,9 +52,9 @@ vet what you find.
 The short version:
 
 1. **Search** npm (`@modelcontextprotocol/server-*` and community packages), GitHub, and the
-   MCP server registries / awesome-mcp lists for that service. Use web search — your training
+   MCP server registries / awesome-mcp lists for that service. Use web search - your training
    data is stale on which servers exist.
-2. **Present 1–3 options** to the user with what each does, what auth it needs, and tradeoffs.
+2. **Present 1-3 options** to the user with what each does, what auth it needs, and tradeoffs.
    Don't silently pick one.
 3. **Ask what they actually want**: which tools they need exposed, which to hide or disable,
    what scopes/permissions, and any behavior to adjust. A good third-party server often
@@ -66,23 +66,23 @@ The short version:
 Only fall back to building from scratch if nothing suitable exists, the existing options are
 low quality, or the user explicitly wants their own.
 
-## Step 1B — Build path: gather the spec
+## Step 1B - Build path: gather the spec
 
 For a custom server, pin down before scaffolding:
 
-- **What tools** the server should expose — each as a verb the agent can call (e.g.
+- **What tools** the server should expose - each as a verb the agent can call (e.g.
   `create_invoice`, `search_contacts`, `restart_service`). Name them clearly; the agent picks
   tools by name and description.
-- **Inputs and outputs** per tool — typed arguments and a structured (usually dict/JSON)
+- **Inputs and outputs** per tool - typed arguments and a structured (usually dict/JSON)
   return so the agent can reason over results.
-- **What it talks to** — an HTTP API, a local file/db, a CLI, the user's own code.
-- **Secrets** it needs — API keys, tokens, base URLs.
-- **Which tools are destructive** vs read-only — this drives Glaido's approval defaults
+- **What it talks to** - an HTTP API, a local file/db, a CLI, the user's own code.
+- **Secrets** it needs - API keys, tokens, base URLs.
+- **Which tools are destructive** vs read-only - this drives Glaido's approval defaults
   (see Step 4).
 
-## Step 2 — Choose language and a stable location
+## Step 2 - Choose language and a stable location
 
-**Language:** default to **Python + FastMCP, run via `uv`** when the user has no preference —
+**Language:** default to **Python + FastMCP, run via `uv`** when the user has no preference -
 it's the lightest path and the most reliable for first-time setups. Otherwise match the
 user's stack. The skill is language-agnostic; pick the reference for the chosen language:
 
@@ -96,7 +96,7 @@ folder moves later, the import breaks until the path is updated. A dedicated fol
 `~/glaido-mcp-servers/my-server` works well.
 
 **Runtime:** confirm the launcher the server will use is actually installed before scaffolding
-— a first-time user often doesn't have it yet. Quick check:
+- a first-time user often doesn't have it yet. Quick check:
 
 ```bash
 command -v uv      # Python servers (recommended launcher)
@@ -104,13 +104,13 @@ command -v node    # TypeScript servers
 command -v npx     # running published servers / TypeScript
 ```
 
-If it's missing, install it before continuing — see
+If it's missing, install it before continuing - see
 [references/installing-runtimes.md](references/installing-runtimes.md) for per-OS commands.
 For Python, **recommend `uv`**: `uv run` creates the isolated environment, installs
 dependencies, and even fetches Python for you, so the user never has to deal with virtualenvs
-or a separate Python install. Don't assume it's there — check.
+or a separate Python install. Don't assume it's there - check.
 
-## Step 3 — Scaffold the folder
+## Step 3 - Scaffold the folder
 
 Copy and adapt the template for the chosen language from
 [assets/templates/](assets/templates/). A finished folder looks like:
@@ -127,15 +127,15 @@ my-server/
 
 The language reference tells you exactly which files to create and what goes in each.
 
-## Step 4 — Implement the server
+## Step 4 - Implement the server
 
 Whichever language, these rules make a server that behaves well inside Glaido:
 
-- **Give the server a clear `instructions` string — it's how the agent knows the server
+- **Give the server a clear `instructions` string - it's how the agent knows the server
   exists and when to reach for it.** MCP sends this server-level text to the model (in the
   `initialize` response) as a hint about what the whole server is for, separate from the
   per-tool descriptions. Write it as a "use this server to…" statement that names the domain
-  and the kinds of actions it covers (e.g. "Use to manage the user's Todoist tasks — search,
+  and the kinds of actions it covers (e.g. "Use to manage the user's Todoist tasks - search,
   create, complete, and delete."), not a throwaway label. The per-tool descriptions tell the
   agent *which* tool to call; the server instructions tell it *whether to look here at all*.
   The language reference shows exactly where to set it (e.g. FastMCP's `instructions=`).
@@ -155,7 +155,7 @@ Whichever language, these rules make a server that behaves well inside Glaido:
   failed. Send all logging and debug output to **stderr** instead. The language references
   show the safe pattern.
 
-## Step 5 — Set up environment variables
+## Step 5 - Set up environment variables
 
 Default approach (chosen for this skill): **the server loads its own `.env` from its own
 folder.**
@@ -174,7 +174,7 @@ the user imports. Prefer `.env` for secrets; the `env` block is fine for non-sec
 a base URL or a feature flag. Details and the tradeoff are in
 [references/glaido-integration.md](references/glaido-integration.md).
 
-## Step 6 — Write the mcp.json
+## Step 6 - Write the mcp.json
 
 This is the file Glaido reads. It must be named exactly `mcp.json` and sit at the folder root.
 Full schema and field reference: [references/glaido-integration.md](references/glaido-integration.md).
@@ -193,16 +193,16 @@ The essentials:
 }
 ```
 
-- **`type` is `stdio`** for local servers — that's what this skill targets.
+- **`type` is `stdio`** for local servers - that's what this skill targets.
 - **`command` must be resolvable on the user's PATH** (`uv`, `npx`, `node`, `python3`, …). If
   it might not be, use an absolute path to the binary.
 - **Every path must be absolute.** Relative paths are not expanded. Generate the real path with
-  `pwd` in the server folder and substitute it — don't leave the placeholder.
+  `pwd` in the server folder and substitute it - don't leave the placeholder.
 - The key (`"My Server"`) is the display name; Glaido derives a clean ID from it.
 
-## Step 7 — Validate before handing off
+## Step 7 - Validate before handing off
 
-Run the bundled checker against the folder — it catches the common import-blockers (missing or
+Run the bundled checker against the folder - it catches the common import-blockers (missing or
 malformed `mcp.json`, relative paths, a `command` not on PATH, committed secrets, and whether
 the process even launches):
 
@@ -213,11 +213,11 @@ python3 <path-to-this-skill>/scripts/validate_glaido_mcp.py /ABSOLUTE/PATH/TO/my
 (The script is [scripts/validate_glaido_mcp.py](scripts/validate_glaido_mcp.py), relative to
 this skill's folder.)
 
-Then start the server by hand to confirm it boots and exposes its tools without crashing — the
+Then start the server by hand to confirm it boots and exposes its tools without crashing - the
 language reference gives the exact command (e.g. `uv run server.py`). Fix anything the checker
 or the launch surfaces before telling the user it's ready.
 
-## Step 8 — Hand off: how the user imports it
+## Step 8 - Hand off: how the user imports it
 
 Give the user these steps (and fill in the real folder name and keys):
 
@@ -225,7 +225,7 @@ Give the user these steps (and fill in the real folder name and keys):
    `.env.example` if `.env` doesn't exist yet).
 2. Open **Glaido → Settings → MCP Servers**.
 3. Click **Import** and select the `<folder>` you just created.
-4. The server appears in the list — enable it with its toggle.
+4. The server appears in the list - enable it with its toggle.
 5. The agent can now use its tools. Destructive tools may ask for approval the first time,
    which is expected.
 

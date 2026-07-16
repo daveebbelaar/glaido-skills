@@ -1,16 +1,16 @@
 # Other languages
 
 MCP is language-agnostic. If the user wants Go, Rust, Java, C#, Kotlin, Ruby, or anything
-else, the shape of the work is identical to the Python and TypeScript paths — only the SDK and
+else, the shape of the work is identical to the Python and TypeScript paths - only the SDK and
 the `command` change. Use the language's **official MCP SDK** and fetch its current docs
-(your training data is likely stale on exact APIs — search the web or use a docs tool).
+(your training data is likely stale on exact APIs - search the web or use a docs tool).
 
 ## Official SDKs
 
 | Language | SDK |
 | --- | --- |
-| Python | `mcp` (FastMCP) — see [python-fastmcp.md](python-fastmcp.md) |
-| TypeScript / Node | `@modelcontextprotocol/sdk` — see [typescript-mcp.md](typescript-mcp.md) |
+| Python | `mcp` (FastMCP) - see [python-fastmcp.md](python-fastmcp.md) |
+| TypeScript / Node | `@modelcontextprotocol/sdk` - see [typescript-mcp.md](typescript-mcp.md) |
 | Go | `github.com/modelcontextprotocol/go-sdk` |
 | Rust | `rmcp` (the official Rust SDK) |
 | Java | `io.modelcontextprotocol.sdk` |
@@ -27,11 +27,11 @@ and Node specifics, see [installing-runtimes.md](installing-runtimes.md).
 ## The six things that must be true regardless of language
 
 1. **stdio transport.** Wire the server to MCP over stdin/stdout. Every SDK has a stdio
-   transport — use it. This is what Glaido launches for local servers.
+   transport - use it. This is what Glaido launches for local servers.
 2. **stdout is sacred.** Write nothing to stdout but MCP protocol messages. Send all logging to
-   stderr. A stray write to stdout breaks the connection — this is the most common failure.
+   stderr. A stray write to stdout breaks the connection - this is the most common failure.
 3. **Server-level instructions.** Set the server's `instructions` (every SDK exposes this on
-   the server/constructor — it becomes the `instructions` field of the MCP `initialize`
+   the server/constructor - it becomes the `instructions` field of the MCP `initialize`
    response). The client passes it to the model as a hint about what the whole server is for
    and when to reach for it, separate from the per-tool descriptions. Write a "use this server
    to…" statement naming the domain and the kinds of actions it covers.
@@ -47,7 +47,7 @@ and Node specifics, see [installing-runtimes.md](installing-runtimes.md).
 
 ## mcp.json shape per language
 
-The pattern is always the same — swap `command` and `args` for whatever launches the built
+The pattern is always the same - swap `command` and `args` for whatever launches the built
 artifact:
 
 ```json
@@ -82,4 +82,4 @@ python3 <path-to-this-skill>/scripts/validate_glaido_mcp.py /ABSOLUTE/PATH/TO/my
 ```
 
 It checks the `mcp.json` structure, absolute paths, the command on PATH, committed secrets,
-and that the process launches — none of which is language-specific.
+and that the process launches - none of which is language-specific.

@@ -31,13 +31,13 @@ PLACEHOLDER = "/ABSOLUTE/PATH/TO"
 
 # Install guidance shown when a server's launcher isn't found on PATH.
 INSTALL_HINTS = {
-    "uv": "Install uv (recommended for Python — it manages the venv AND installs Python for you):\n"
+    "uv": "Install uv (recommended for Python - it manages the venv AND installs Python for you):\n"
           "          macOS/Linux: curl -LsSf https://astral.sh/uv/install.sh | sh   (or: brew install uv)\n"
           "          Windows:     powershell -c \"irm https://astral.sh/uv/install.ps1 | iex\"",
     "uvx": "uvx ships with uv. Install uv: curl -LsSf https://astral.sh/uv/install.sh | sh   (or: brew install uv)",
     "node": "Install Node.js LTS: https://nodejs.org  (or: brew install node, or via nvm)",
     "npx": "npx ships with Node.js. Install Node.js LTS: https://nodejs.org  (or: brew install node)",
-    "python3": "Recommended: install uv and run via `uv run` — uv fetches Python for you:\n"
+    "python3": "Recommended: install uv and run via `uv run` - uv fetches Python for you:\n"
                "          curl -LsSf https://astral.sh/uv/install.sh | sh\n"
                "          Otherwise install Python 3.11+ from https://python.org",
 }
@@ -114,7 +114,7 @@ def check_command(command: str, folder: Path) -> None:
                            "server launches here but fails in Glaido with 'command not found', "
                            f"set \"command\" to the absolute path: {resolved}")
         else:
-            msg = (f"`command` {command!r} not found on PATH — the runtime isn't installed "
+            msg = (f"`command` {command!r} not found on PATH - the runtime isn't installed "
                    f"(or isn't on PATH).")
             hint = INSTALL_HINTS.get(command)
             if hint:
@@ -131,7 +131,7 @@ def check_env_block(env: dict) -> None:
             report("WARN", f"env value for {key!r} should be a string")
             continue
         if any(p.search(value) for p in SECRET_VALUE_PATTERNS):
-            report("WARN", f"env key {key!r} looks like a secret inlined in mcp.json — it will "
+            report("WARN", f"env key {key!r} looks like a secret inlined in mcp.json - it will "
                            f"be copied into Glaido's config on import. Prefer a gitignored .env.")
 
 
@@ -147,9 +147,9 @@ def check_secrets_hygiene(folder: Path) -> None:
         if ignored:
             report("PASS", ".env exists and is gitignored")
         else:
-            report("WARN", ".env exists but is not covered by .gitignore — risk of committing secrets")
+            report("WARN", ".env exists but is not covered by .gitignore - risk of committing secrets")
     elif env_example.exists():
-        report("INFO", "no .env yet — remind the user to copy .env.example to .env and fill it in")
+        report("INFO", "no .env yet - remind the user to copy .env.example to .env and fill it in")
 
 
 def launch_check(command: str, args: list, cwd: Path, timeout: float) -> None:
@@ -172,7 +172,7 @@ def launch_check(command: str, args: list, cwd: Path, timeout: float) -> None:
 
     time.sleep(timeout)
     if proc.poll() is not None:
-        # Exited on its own — likely a crash or missing dependency.
+        # Exited on its own - likely a crash or missing dependency.
         out, err = proc.communicate()
         detail = (err or out or b"").decode(errors="replace").strip()
         report("FAIL", f"server exited immediately (code {proc.returncode}). "
@@ -187,7 +187,7 @@ def launch_check(command: str, args: list, cwd: Path, timeout: float) -> None:
         proc.kill()
         out, _err = proc.communicate()
     if out and out.strip():
-        report("WARN", "server wrote to stdout before any request — this corrupts the MCP "
+        report("WARN", "server wrote to stdout before any request - this corrupts the MCP "
                        "stream in Glaido. Move all logging to stderr. Saw:\n        "
                        + out.decode(errors="replace").strip()[:300])
     else:
@@ -212,7 +212,7 @@ def main() -> int:
         legacy = folder / ".mcp.json"
         if legacy.exists():
             mcp_path = legacy
-            report("WARN", "found legacy .mcp.json — rename it to mcp.json")
+            report("WARN", "found legacy .mcp.json - rename it to mcp.json")
         else:
             report("FAIL", f"no mcp.json at the folder root: {folder}")
             return 1
@@ -236,7 +236,7 @@ def main() -> int:
             continue
         stype = server.get("type", "stdio")
         if stype != "stdio":
-            report("INFO", f"type is {stype!r} (not a local stdio server — out of scope here)")
+            report("INFO", f"type is {stype!r} (not a local stdio server - out of scope here)")
             continue
         command = server.get("command", "")
         srv_args = server.get("args", []) or []
@@ -260,7 +260,7 @@ def main() -> int:
 
     print()
     if failures:
-        print(f"RESULT: {failures} failure(s), {warnings} warning(s) — fix the failures before importing.")
+        print(f"RESULT: {failures} failure(s), {warnings} warning(s) - fix the failures before importing.")
         return 1
     print(f"RESULT: ready to import. {warnings} warning(s) to review.")
     return 0

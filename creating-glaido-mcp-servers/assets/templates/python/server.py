@@ -17,7 +17,7 @@ load_dotenv(Path(__file__).resolve().parent / ".env")
 # Server-level instructions: tells the agent what this server is for and WHEN to use it.
 # Sent to the model (via the MCP `initialize` response) as a hint alongside the tool list,
 # so the agent knows whether to reach for this server at all. Write a "use this server to…"
-# statement that names the domain and the kinds of actions it covers — not a label.
+# statement that names the domain and the kinds of actions it covers - not a label.
 SERVER_INSTRUCTIONS = (
     "Use this server to <do X> with <service/domain>. "
     "Covers <the kinds of actions, e.g. searching, creating, updating items>."
@@ -36,7 +36,7 @@ mcp = FastMCP(name="My Server", instructions=SERVER_INSTRUCTIONS)
 def search_items(query: str, limit: Optional[int] = None) -> dict:
     """Search items by a free-text query. Read-only.
 
-    The agent reads this docstring to decide when to call the tool — make it a clear
+    The agent reads this docstring to decide when to call the tool - make it a clear
     capability statement.
     """
     # ... call your API or logic here ...

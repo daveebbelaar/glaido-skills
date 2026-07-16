@@ -6,7 +6,7 @@ managed and run with `uv`. Glaido launches it as `uv --directory <abs> run serve
 Copyable starter files live in [../assets/templates/python/](../assets/templates/python/).
 Copy that folder, rename it, and adapt.
 
-**Prerequisite:** `uv` must be installed (`command -v uv`). If it isn't, install it first — see
+**Prerequisite:** `uv` must be installed (`command -v uv`). If it isn't, install it first - see
 [installing-runtimes.md](installing-runtimes.md). You don't need a separate Python install: `uv
 run` fetches a compatible Python and manages the environment for you, which is the whole reason
 this skill defaults to uv.
@@ -85,7 +85,7 @@ def search_items(query: str, limit: Optional[int] = None) -> dict:
     annotations=ToolAnnotations(readOnlyHint=False, destructiveHint=True),
 )
 def delete_item(item_id: str) -> dict:
-    """Delete an item by id. Destructive — Glaido will ask before running."""
+    """Delete an item by id. Destructive - Glaido will ask before running."""
     return {"status": "ok", "deleted": item_id}
 
 
@@ -95,11 +95,11 @@ if __name__ == "__main__":
 
 Key points:
 
-- **`mcp.run(transport="stdio")`** is required — that's the transport Glaido uses for local
+- **`mcp.run(transport="stdio")`** is required - that's the transport Glaido uses for local
   servers.
 - **Type your arguments and return a dict.** FastMCP turns the signature + docstring into the
   tool schema the agent sees. The docstring is the description the agent reads to decide
-  whether to call the tool — write it for that purpose.
+  whether to call the tool - write it for that purpose.
 - **Annotate read-only vs destructive tools** with `ToolAnnotations`. Glaido uses these to
   decide whether a tool runs automatically or asks the user first. `openWorldHint=True` means
   the tool reaches an external system (an API); set it on tools that hit the network.
@@ -113,7 +113,7 @@ stream and Glaido marks the server failed. For any logging, write to stderr:
 ```python
 import sys
 print("debug info", file=sys.stderr)          # safe
-# or use the logging module — it defaults to stderr
+# or use the logging module - it defaults to stderr
 import logging
 logging.getLogger(__name__).info("started")    # safe
 ```
@@ -135,7 +135,7 @@ SERVICE_API_KEY=replace_with_your_key
 ```
 
 Return a clean `{"status": "error", "error": "SERVICE_API_KEY is missing"}` when a key is
-absent — far easier for the user to diagnose than a stack trace.
+absent - far easier for the user to diagnose than a stack trace.
 
 ## mcp.json
 
@@ -152,7 +152,7 @@ absent — far easier for the user to diagnose than a stack trace.
 }
 ```
 
-Replace the path with the real absolute path — get it by running `pwd` inside the folder.
+Replace the path with the real absolute path - get it by running `pwd` inside the folder.
 `uv --directory <path> run server.py` makes uv resolve dependencies and run from that folder,
 so it works no matter where Glaido invokes it.
 

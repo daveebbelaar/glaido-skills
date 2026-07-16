@@ -47,13 +47,13 @@ Each entry under `mcpServers` is keyed by a **display name** and supports:
 
 | Field | Required | Default | Meaning |
 |-------|----------|---------|---------|
-| `type` | no | `stdio` | Transport. Use `stdio` for local servers — this is what the skill targets. Remote types (`sse`, `http`) can be listed but are read-only in the app and configured by hand. |
-| `command` | **yes** | — | Executable to launch, resolved on the user's PATH (`uv`, `npx`, `node`, `python3`). Use an absolute path if it might not be on PATH. |
+| `type` | no | `stdio` | Transport. Use `stdio` for local servers - this is what the skill targets. Remote types (`sse`, `http`) can be listed but are read-only in the app and configured by hand. |
+| `command` | **yes** | - | Executable to launch, resolved on the user's PATH (`uv`, `npx`, `node`, `python3`). Use an absolute path if it might not be on PATH. |
 | `args` | no | `[]` | Arguments passed to `command`, each as its own array element. |
-| `workingDirectory` | no | — | Absolute path the command runs in. If omitted, Glaido infers it from a `--directory` arg or the command's parent directory. |
+| `workingDirectory` | no | - | Absolute path the command runs in. If omitted, Glaido infers it from a `--directory` arg or the command's parent directory. |
 | `env` | no | `{}` | Environment variables passed to the process as string key/value pairs. |
 | `name` | no | the key | Friendly display name; falls back to the object key. |
-| `instructions` | no | — | Short description of what the server does, shown in the **app UI**. `description` works as a fallback. Note: this is a Glaido display field — *not* the MCP server-level `instructions` your SDK sets (FastMCP's `instructions=`), which goes to the model. The two are independent; set both. |
+| `instructions` | no | - | Short description of what the server does, shown in the **app UI**. `description` works as a fallback. Note: this is a Glaido display field - *not* the MCP server-level `instructions` your SDK sets (FastMCP's `instructions=`), which goes to the model. The two are independent; set both. |
 | `status` | no | `enabled` | `enabled` or `disabled`. |
 | `toolApproval` | no | `{}` | Per-tool approval policy: `{ "tool_name": "auto" \| "ask" \| "deny" }`. See [Tool approval](#tool-approval). |
 
@@ -106,7 +106,7 @@ variable. No dotenv needed:
 ```
 
 Use this for **non-secret configuration** (base URLs, flags, regions). You *can* put secrets
-here too, but then the secret lives inside `mcp.json` — which is easy to commit by accident
+here too, but then the secret lives inside `mcp.json` - which is easy to commit by accident
 and is copied into Glaido's own config on import. Prefer `.env` for anything sensitive.
 
 A clean combination: non-secret config in the `env` block, secrets in `.env`.
@@ -119,10 +119,10 @@ Tell the user to:
 2. Click **Import**.
 3. Select the **folder** that contains `mcp.json` (select the folder, not the file).
 4. The server shows up in the list; toggle it on to enable it.
-5. If a key is missing or wrong, the server shows as failed/disconnected — fix `.env` and
+5. If a key is missing or wrong, the server shows as failed/disconnected - fix `.env` and
    re-enable.
 
-If the folder doesn't contain an `mcp.json`, Glaido reports an import failure — that's the
+If the folder doesn't contain an `mcp.json`, Glaido reports an import failure - that's the
 first thing to check.
 
 ## Tool approval
@@ -159,7 +159,7 @@ The bundled `scripts/validate_glaido_mcp.py` checks most of these automatically.
 ## Troubleshooting
 
 **Server shows as failed / disconnected right after enabling**
-- Most often stray stdout output. Confirm nothing prints to stdout except MCP messages — move
+- Most often stray stdout output. Confirm nothing prints to stdout except MCP messages - move
   every log/print/banner to stderr. A single stray line breaks the handshake.
 - A missing or wrong key. Check `.env` has the real values and the server loads it from its
   own folder (by `__file__` path, not the cwd).

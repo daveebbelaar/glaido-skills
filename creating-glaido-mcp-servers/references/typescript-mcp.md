@@ -7,7 +7,7 @@ A local MCP server built with the official TypeScript SDK
 Copyable starter files live in [../assets/templates/typescript/](../assets/templates/typescript/).
 
 **Prerequisite:** Node.js must be installed (`command -v node` and `command -v npx`). If it
-isn't, install the LTS first — see [installing-runtimes.md](installing-runtimes.md).
+isn't, install the LTS first - see [installing-runtimes.md](installing-runtimes.md).
 
 ## Folder layout
 
@@ -95,7 +95,7 @@ server.registerTool(
 server.registerTool(
   "delete_item",
   {
-    description: "Delete an item by id. Destructive — Glaido will ask before running.",
+    description: "Delete an item by id. Destructive - Glaido will ask before running.",
     inputSchema: { id: z.string() },
     annotations: { readOnlyHint: false, destructiveHint: true },
   },
@@ -111,20 +111,20 @@ await server.connect(transport);
 Key points:
 
 - **`StdioServerTransport`** is what Glaido uses for local servers.
-- **Describe each tool clearly** — the description is what the agent reads to choose the tool.
+- **Describe each tool clearly** - the description is what the agent reads to choose the tool.
 - **Use `zod` for `inputSchema`**; it becomes the argument schema the agent sees.
-- **Annotate read-only vs destructive** via `annotations` — Glaido uses these to decide
+- **Annotate read-only vs destructive** via `annotations` - Glaido uses these to decide
   whether a tool runs automatically or prompts the user. Set `openWorldHint: true` for tools
   that reach an external system.
 - Return content as text; JSON-stringified structured data lets the agent reason over results.
 
 ## The stdout rule (critical)
 
-stdout is the MCP channel. **Never `console.log`** — it corrupts the stream and Glaido marks
+stdout is the MCP channel. **Never `console.log`** - it corrupts the stream and Glaido marks
 the server failed. Use `console.error` (stderr) for any logging:
 
 ```typescript
-console.error("debug info"); // safe — stderr
+console.error("debug info"); // safe - stderr
 // console.log("...")        // BREAKS the server
 ```
 

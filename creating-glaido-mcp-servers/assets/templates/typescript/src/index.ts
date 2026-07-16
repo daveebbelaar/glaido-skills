@@ -34,7 +34,7 @@ server.registerTool(
 server.registerTool(
   "delete_item",
   {
-    description: "Delete an item by id. Destructive — Glaido will ask before running.",
+    description: "Delete an item by id. Destructive - Glaido will ask before running.",
     inputSchema: { id: z.string() },
     annotations: { readOnlyHint: false, destructiveHint: true },
   },
@@ -44,6 +44,6 @@ server.registerTool(
   },
 );
 
-// Never console.log — stdout is the MCP channel. Use console.error for any logging.
+// Never console.log - stdout is the MCP channel. Use console.error for any logging.
 const transport = new StdioServerTransport();
 await server.connect(transport);

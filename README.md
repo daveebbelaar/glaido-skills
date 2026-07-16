@@ -61,11 +61,6 @@ creating-glaido-mcp-servers/
     └── assets/templates/   # Copyable starter projects
 ```
 
-## Contributing
-
-Issues and pull requests are welcome. If you've built something with Glaido that others could
-reuse - a skill, a template, an integration pattern - we'd love to include it.
-
 ## Links
 
 - [Glaido](https://glaido.com)

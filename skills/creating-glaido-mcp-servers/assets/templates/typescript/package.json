@@ -1,0 +1,21 @@
+{
+  "name": "glaido-mcp-my-server",
+  "version": "0.1.0",
+  "description": "A local MCP server for Glaido.",
+  "type": "module",
+  "bin": { "glaido-mcp-my-server": "dist/index.js" },
+  "files": ["dist"],
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/index.js"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.0.0",
+    "dotenv": "^16.4.5",
+    "zod": "^3.23.8"
+  },
+  "devDependencies": {
+    "typescript": "^5.5.0",
+    "@types/node": "^22.0.0"
+  }
+}

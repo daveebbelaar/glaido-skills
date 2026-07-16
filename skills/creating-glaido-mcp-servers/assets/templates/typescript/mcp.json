@@ -1,0 +1,12 @@
+{
+  "mcpServers": {
+    "My Server": {
+      "type": "stdio",
+      "command": "node",
+      "args": [
+        "/ABSOLUTE/PATH/TO/my-server/dist/index.js"
+      ],
+      "env": {}
+    }
+  }
+}

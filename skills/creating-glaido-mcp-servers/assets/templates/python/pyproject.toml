@@ -1,0 +1,11 @@
+[project]
+name = "glaido-mcp-my-server"
+version = "0.1.0"
+description = "A local MCP server for Glaido."
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "mcp[cli]",
+    "python-dotenv",
+    # "httpx",   # uncomment if the server calls an HTTP API
+]

@@ -1,0 +1,15 @@
+{
+  "mcpServers": {
+    "My Server": {
+      "type": "stdio",
+      "command": "uv",
+      "args": [
+        "--directory",
+        "/ABSOLUTE/PATH/TO/my-server",
+        "run",
+        "server.py"
+      ],
+      "env": {}
+    }
+  }
+}

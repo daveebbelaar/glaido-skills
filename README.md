@@ -31,6 +31,20 @@ cp -r glaido-skills/creating-glaido-mcp-servers ~/.claude/skills/
 Then just ask for what you want - for example, *"connect Glaido to my Notion workspace"* - and
 the skill triggers automatically.
 
+### Codex (OpenAI)
+
+Copy the skill folder into your project's `.codex/skills/` (or `~/.codex/skills/` to make it
+available everywhere):
+
+```bash
+git clone https://github.com/daveebbelaar/glaido-skills.git
+mkdir -p ~/.codex/skills
+cp -r glaido-skills/creating-glaido-mcp-servers ~/.codex/skills/
+```
+
+Codex picks up new skills automatically. Run `/skills` to confirm it's listed, or type `$` to
+mention it directly; otherwise it triggers on matching requests just like in Claude Code.
+
 ### Other agents
 
 Any agent that supports [agent skills](https://agentskills.io) can use these - point it at the

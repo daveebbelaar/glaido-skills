@@ -155,6 +155,9 @@ Published package (no local build needed):
 }
 ```
 
+On Windows, wrap `npx` in `cmd /c` (`"command": "cmd", "args": ["/c", "npx", "-y",
+"glaido-mcp-my-server"]`) - `.cmd` shims cannot be launched directly.
+
 Local built output:
 
 ```json

@@ -13,7 +13,8 @@ command -v npx     && npx --version       # running published servers / TypeScri
 command -v python3 && python3 --version   # only if not using uv
 ```
 
-If a check prints nothing, that tool isn't on PATH and needs installing.
+If a check prints nothing, that tool isn't on PATH and needs installing. On Windows, use
+`where uv` / `where node` / `where npx` in cmd, or `Get-Command uv` in PowerShell.
 
 ## uv - recommended for Python
 
@@ -108,6 +109,14 @@ command -v node   # e.g. /opt/homebrew/bin/node
 
 `scripts/validate_glaido_mcp.py` prints the resolved absolute path when it finds a bare-name
 command, so you can paste it straight in if a server connects in the terminal but not in Glaido.
+
+### Windows notes
+
+- Windows GUI apps read PATH from the registry at launch, so after installing a runtime,
+  restart Glaido before retrying.
+- `npx` and `npm` are `.cmd` batch shims on Windows and cannot be launched directly - even
+  with an absolute path. Wrap them: `"command": "cmd", "args": ["/c", "npx", "-y",
+  "<package>"]`. `uv`, `uvx`, and `node` are real executables and work as plain commands.
 
 ## After installing anything
 

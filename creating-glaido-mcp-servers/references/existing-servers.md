@@ -67,7 +67,14 @@ common patterns:
 }
 ```
 
-Python-published servers use `uvx`:
+**On Windows**, `npx` is a `.cmd` batch shim that cannot be launched directly - wrap it in
+`cmd /c` or Glaido will fail to start it:
+
+```json
+{ "command": "cmd", "args": ["/c", "npx", "-y", "@modelcontextprotocol/server-github"], "env": {} }
+```
+
+Python-published servers use `uvx` (a real executable on every OS, so no wrapper needed):
 
 ```json
 { "command": "uvx", "args": ["some-mcp-server"], "env": {} }

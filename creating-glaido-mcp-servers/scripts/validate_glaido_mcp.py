@@ -109,6 +109,12 @@ def check_command(command: str, folder: Path) -> None:
     else:
         resolved = shutil.which(command)
         if resolved:
+            if sys.platform == "win32" and resolved.lower().endswith((".cmd", ".bat")):
+                report("FAIL", f"`command` {command!r} resolves to a batch shim ({resolved}) - "
+                               "Windows cannot launch .cmd/.bat files directly, so Glaido will "
+                               "fail to start it. Set \"command\" to \"cmd\" and prepend "
+                               f"\"/c\", {command!r} to args.")
+                return
             report("PASS", f"`command` {command!r} is on PATH ({resolved})")
             report("INFO", "Glaido is a GUI app and may not inherit your shell PATH. If the "
                            "server launches here but fails in Glaido with 'command not found', "

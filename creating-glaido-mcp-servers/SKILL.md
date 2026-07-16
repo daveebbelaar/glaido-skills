@@ -104,6 +104,9 @@ command -v node    # TypeScript servers
 command -v npx     # running published servers / TypeScript
 ```
 
+On Windows, use `where uv` / `where node` / `where npx` instead (or PowerShell's
+`Get-Command`).
+
 If it's missing, install it before continuing - see
 [references/installing-runtimes.md](references/installing-runtimes.md) for per-OS commands.
 For Python, **recommend `uv`**: `uv run` creates the isolated environment, installs
@@ -199,6 +202,10 @@ The essentials:
 - **Every path must be absolute.** Relative paths are not expanded. Generate the real path with
   `pwd` in the server folder and substitute it - don't leave the placeholder.
 - The key (`"My Server"`) is the display name; Glaido derives a clean ID from it.
+- **Windows:** `npx` and `npm` are `.cmd` batch shims, which Windows cannot launch directly -
+  Glaido will fail to start them even though they work in your terminal. Wrap them in `cmd`:
+  `"command": "cmd", "args": ["/c", "npx", "-y", "<package>"]`. Real executables
+  (`uv`, `uvx`, `node`) need no wrapper.
 
 ## Step 7 - Validate before handing off
 
@@ -211,7 +218,7 @@ python3 <path-to-this-skill>/scripts/validate_glaido_mcp.py /ABSOLUTE/PATH/TO/my
 ```
 
 (The script is [scripts/validate_glaido_mcp.py](scripts/validate_glaido_mcp.py), relative to
-this skill's folder.)
+this skill's folder. On Windows, run it with `python` instead of `python3`.)
 
 Then start the server by hand to confirm it boots and exposes its tools without crashing - the
 language reference gives the exact command (e.g. `uv run server.py`). Fix anything the checker

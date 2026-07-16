@@ -81,5 +81,7 @@ Whatever the language, run the bundled checker against the folder before handing
 python3 <path-to-this-skill>/scripts/validate_glaido_mcp.py /ABSOLUTE/PATH/TO/my-server
 ```
 
+(On Windows, run it with `python` instead of `python3`.)
+
 It checks the `mcp.json` structure, absolute paths, the command on PATH, committed secrets,
 and that the process launches - none of which is language-specific.

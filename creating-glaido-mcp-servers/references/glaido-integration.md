@@ -175,6 +175,12 @@ The bundled `scripts/validate_glaido_mcp.py` checks most of these automatically.
 - The launcher isn't on PATH in the environment Glaido runs in. Use an absolute path to the
   binary (e.g. the full path to `uv` or `node`), or install it where it's discoverable.
 
+**Works in the terminal but fails to start in Glaido on Windows**
+- `npx` and `npm` resolve to `.cmd` batch shims, which Windows cannot spawn directly. Set
+  `command` to `cmd` and prepend `/c` plus the shim to `args`:
+  `"command": "cmd", "args": ["/c", "npx", "-y", "<package>"]`. Real executables (`uv.exe`,
+  `uvx.exe`, `node.exe`) work as plain commands.
+
 **Tool runs but errors on auth**
 - The key is present but invalid/expired, or the server reads the wrong variable name. Confirm
   the variable name in code matches the one in `.env` / the `env` block.

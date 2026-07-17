@@ -212,6 +212,7 @@ The essentials:
   "mcpServers": {
     "My Server": {
       "type": "stdio",
+      "instructions": "One-line description of what this server does.",
       "command": "uv",
       "args": ["--directory", "/ABSOLUTE/PATH/TO/my-server", "run", "server.py"],
       "env": {}
@@ -221,6 +222,9 @@ The essentials:
 ```
 
 - **`type` is `stdio`** for local servers - that's what this skill targets.
+- **`instructions` is the display description** shown under the server's name in the Glaido
+  app - always set it. It is independent from the MCP server-level instructions your server
+  code sends to the model (e.g. FastMCP's `instructions=`); set both.
 - **`command` must be resolvable on the user's PATH** (`uv`, `npx`, `node`, `python3`, …). If
   it might not be, use an absolute path to the binary.
 - **Every path must be absolute.** Relative paths are not expanded. Generate the real path with

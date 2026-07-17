@@ -2,6 +2,7 @@
   "mcpServers": {
     "Weather API": {
       "type": "stdio",
+      "instructions": "Current weather for any city, powered by the free Open-Meteo API.",
       "command": "uv",
       "args": [
         "--directory",

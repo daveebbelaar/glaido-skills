@@ -2,6 +2,7 @@
   "mcpServers": {
     "My Server": {
       "type": "stdio",
+      "instructions": "One-line description of what this server does, shown in the Glaido app.",
       "command": "uv",
       "args": [
         "--directory",

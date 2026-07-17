@@ -59,15 +59,15 @@ do not offer options, do not regenerate or modify any file, and do not pause for
 confirmation - run the steps below exactly and report the result.** The whole thing should
 take well under a minute.
 
-1. **Copy the example to the canonical location** (`~/glaido-mcp-servers/hello-world-weather`).
+1. **Copy the example to the canonical location** (`~/Glaido/glaido-mcp-servers/hello-world-weather`).
    If this repository is already on disk (skill installed or repo cloned), copy from there;
    otherwise:
 
    ```bash
    TMP=$(mktemp -d)
    git clone --depth 1 https://github.com/daveebbelaar/glaido-skills.git "$TMP/glaido-skills"
-   mkdir -p ~/glaido-mcp-servers
-   cp -r "$TMP/glaido-skills/examples/hello-world-weather" ~/glaido-mcp-servers/hello-world-weather
+   mkdir -p ~/Glaido/glaido-mcp-servers
+   cp -r "$TMP/glaido-skills/examples/hello-world-weather" ~/Glaido/glaido-mcp-servers/hello-world-weather
    ```
 
    (Windows: run the equivalents in PowerShell; `git`, `mkdir`, and `cp` all work there.)
@@ -78,7 +78,7 @@ take well under a minute.
 3. **Validate**, using this skill's checker:
 
    ```bash
-   python3 <path-to-this-skill>/scripts/validate_glaido_mcp.py ~/glaido-mcp-servers/hello-world-weather
+   python3 <path-to-this-skill>/scripts/validate_glaido_mcp.py ~/Glaido/glaido-mcp-servers/hello-world-weather
    ```
 
 4. **Hand off** per Step 8. There are no keys to set and no paths to edit: the example's
@@ -135,10 +135,11 @@ user's stack. The skill is language-agnostic; pick the reference for the chosen 
 - TypeScript / Node → [references/typescript-mcp.md](references/typescript-mcp.md)
 - Anything else (Go, Rust, Java, C#, …) → [references/other-languages.md](references/other-languages.md)
 
-**Location:** create the server in its own folder somewhere it will stay put. Glaido stores an
-**absolute path** to this folder and launches the server from there on every run. If the
-folder moves later, the import breaks until the path is updated. A dedicated folder like
-`~/glaido-mcp-servers/my-server` works well.
+**Location:** default to `~/Glaido/glaido-mcp-servers/<server-name>` - one subfolder per
+server, so all of the user's Glaido tools stack side by side in one predictable place (the
+hello-world example lives there too). Use a different location only if the user asks for
+one. The folder must stay put: Glaido launches the server from it on every run, and if it
+moves later the import breaks until the user imports it again.
 
 **Runtime:** confirm the launcher the server will use is actually installed before scaffolding
 - a first-time user often doesn't have it yet. Quick check:

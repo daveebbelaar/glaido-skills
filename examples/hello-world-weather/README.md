@@ -25,7 +25,7 @@ to stdout and will break the connection - move it to stderr.
 
 ## Import into Glaido
 
-1. Put this folder somewhere it will stay put (for example `~/glaido-mcp-servers/hello-world-weather`).
+1. Put this folder somewhere it will stay put (for example `~/Glaido/glaido-mcp-servers/hello-world-weather`).
 2. Open **Glaido → Tools**, click **Import**, and select this folder.
 3. Enable the server with its toggle.
 4. Open Agent Mode and ask: *"What's the weather in Amsterdam?"*

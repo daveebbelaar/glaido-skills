@@ -49,13 +49,13 @@ the skill triggers automatically.
 
 ### Codex (OpenAI)
 
-Copy the skill folder into your project's `.codex/skills/` (or `~/.codex/skills/` to make it
+Copy the skill folder into your project's `.agents/skills/` (or `~/.agents/skills/` to make it
 available everywhere):
 
 ```bash
 git clone https://github.com/daveebbelaar/glaido-skills.git
-mkdir -p ~/.codex/skills
-cp -r glaido-skills/creating-glaido-mcp-servers ~/.codex/skills/
+mkdir -p ~/.agents/skills
+cp -r glaido-skills/creating-glaido-mcp-servers ~/.agents/skills/
 ```
 
 Codex picks up new skills automatically. Run `/skills` to confirm it's listed, or type `$` to
@@ -66,6 +66,10 @@ mention it directly; otherwise it triggers on matching requests just like in Cla
 Any agent that supports [agent skills](https://agentskills.io) can use these - point it at the
 skill folder, or paste the `SKILL.md` as context. The referenced files (`references/`,
 `assets/`, `scripts/`) live alongside it.
+
+> The commands above are safe to re-run: `mkdir -p` does nothing if the folder already exists,
+> and copying only adds or updates this one skill without touching any other skills you have
+> installed. On Windows, run them in PowerShell.
 
 ## Repository layout
 

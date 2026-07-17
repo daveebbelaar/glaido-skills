@@ -1,6 +1,6 @@
 {
   "mcpServers": {
-    "Hello World Weather": {
+    "Weather API": {
       "type": "stdio",
       "command": "uv",
       "args": [

@@ -16,7 +16,7 @@ SERVER_INSTRUCTIONS = (
     "Open-Meteo API."
 )
 
-mcp = FastMCP(name="Hello World Weather", instructions=SERVER_INSTRUCTIONS)
+mcp = FastMCP(name="Weather API", instructions=SERVER_INSTRUCTIONS)
 
 GEOCODING_URL = "https://geocoding-api.open-meteo.com/v1/search"
 FORECAST_URL = "https://api.open-meteo.com/v1/forecast"

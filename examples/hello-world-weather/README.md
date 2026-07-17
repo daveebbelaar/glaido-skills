@@ -1,8 +1,8 @@
-# Hello World Weather - Glaido MCP Server
+# Weather API - Glaido MCP Server
 
-The simplest useful Glaido tool: ask for the weather in any city, out loud. Built with
-FastMCP and run via `uv`. Uses the free [Open-Meteo](https://open-meteo.com) API, so there
-is **no API key and no signup**.
+The simplest useful Glaido tool: ask for the weather in any city, out loud. Imports into
+Glaido as **Weather API**. Built with FastMCP and run via `uv`. Uses the free
+[Open-Meteo](https://open-meteo.com) API, so there is **no API key and no signup**.
 
 ## Tools
 

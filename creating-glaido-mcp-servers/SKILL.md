@@ -51,19 +51,39 @@ using a known product (reuse) or their own system (build)?
 
 A complete, working first tool lives at
 [examples/hello-world-weather/](../examples/hello-world-weather/) in this repository: current
-weather for any city via the free Open-Meteo API. No API key, no signup, no `.env`. It exists
-so a first-time user's first run cannot fail on credentials. **Copy it, don't regenerate it.**
+weather for any city via the free Open-Meteo API. No API key, no signup, no `.env`.
 
-1. **Get the folder.** If this repository is already cloned, copy
-   `examples/hello-world-weather/` to a stable location (e.g.
-   `~/glaido-mcp-servers/hello-world-weather`). Otherwise clone it first:
-   `git clone https://github.com/daveebbelaar/glaido-skills.git`.
-2. **Check the runtime.** The server runs via `uv` - do the Step 2 runtime check and install
-   it if missing ([references/installing-runtimes.md](references/installing-runtimes.md)).
-3. **Validate and hand off** as usual (Steps 7 and 8). There are no keys to set and no paths
-   to edit: the example's `mcp.json` is path-free, and Glaido runs the server from whatever
-   folder the user imports. For the hand-off's try-it step, use
-   *"What's the weather in Amsterdam?"*
+**This is a fixed demo with exactly one correct outcome. There are no design decisions to
+make, no alternatives to weigh, and no approval to ask for. Do not propose folder locations,
+do not offer options, do not regenerate or modify any file, and do not pause for
+confirmation - run the steps below exactly and report the result.** The whole thing should
+take well under a minute.
+
+1. **Copy the example to the canonical location** (`~/glaido-mcp-servers/hello-world-weather`).
+   If this repository is already on disk (skill installed or repo cloned), copy from there;
+   otherwise:
+
+   ```bash
+   TMP=$(mktemp -d)
+   git clone --depth 1 https://github.com/daveebbelaar/glaido-skills.git "$TMP/glaido-skills"
+   mkdir -p ~/glaido-mcp-servers
+   cp -r "$TMP/glaido-skills/examples/hello-world-weather" ~/glaido-mcp-servers/hello-world-weather
+   ```
+
+   (Windows: run the equivalents in PowerShell; `git`, `mkdir`, and `cp` all work there.)
+   Only use a different location if the user explicitly asked for one.
+2. **Ensure `uv` is installed** - the only permitted branch: if `command -v uv` (Windows:
+   `where uv`) finds nothing, install it per
+   [references/installing-runtimes.md](references/installing-runtimes.md).
+3. **Validate**, using this skill's checker:
+
+   ```bash
+   python3 <path-to-this-skill>/scripts/validate_glaido_mcp.py ~/glaido-mcp-servers/hello-world-weather
+   ```
+
+4. **Hand off** per Step 8. There are no keys to set and no paths to edit: the example's
+   `mcp.json` is path-free, and Glaido runs the server from whatever folder the user
+   imports. For the hand-off's try-it step, use *"What's the weather in Amsterdam?"*
 
 The example doubles as reference code for custom builds: one small server, clearly described
 tools, typed arguments, structured returns, correct annotations, nothing on stdout.

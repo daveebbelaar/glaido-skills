@@ -62,7 +62,8 @@ so a first-time user's first run cannot fail on credentials. **Copy it, don't re
    it if missing ([references/installing-runtimes.md](references/installing-runtimes.md)).
 3. **Validate and hand off** as usual (Steps 7 and 8). There are no keys to set and no paths
    to edit: the example's `mcp.json` is path-free, and Glaido runs the server from whatever
-   folder the user imports.
+   folder the user imports. For the hand-off's try-it step, use
+   *"What's the weather in Amsterdam?"*
 
 The example doubles as reference code for custom builds: one small server, clearly described
 tools, typed arguments, structured returns, correct annotations, nothing on stdout.
@@ -257,19 +258,26 @@ Then start the server by hand to confirm it boots and exposes its tools without 
 language reference gives the exact command (e.g. `uv run server.py`). Fix anything the checker
 or the launch surfaces before telling the user it's ready.
 
-## Step 8 - Hand off: how the user imports it
+## Step 8 - Hand off: ALWAYS end with the import steps
 
-Give the user these steps (and fill in the real folder name and keys):
+Assume the user will not read your explanation - they skim to the end and act on the last
+thing they see. Whatever else you report, your **final message must end** with the import
+steps below, filled in with the real folder path and keys. Never bury them mid-message or
+summarize them away.
 
-1. Set your secrets: open `<folder>/.env` and fill in the real values (copy from
-   `.env.example` if `.env` doesn't exist yet).
-2. Open **Glaido → Tools** (in the sidebar under Agent).
-3. Click **Import** and select the `<folder>` you just created.
-4. The server appears in the list - enable it with its toggle.
-5. The agent can now use its tools. Destructive tools may ask for approval the first time,
-   which is expected.
+End your final message with exactly this structure:
 
-If the server doesn't connect, point them at the troubleshooting section in
+1. *(only if the server needs keys)* Open `<folder>/.env` and fill in the real values
+   (copy from `.env.example` if `.env` doesn't exist yet).
+2. Open the **Glaido** app and click **Tools** in the sidebar, under **Agent**.
+   If there is no Tools item, first enable **Settings → Preferences → Enable beta features**.
+3. Click **Import** (top right) and select the **entire folder** `<folder>` - the folder
+   itself, not a file inside it.
+4. The server appears in the list - switch its toggle on.
+5. Try it: open Agent Mode and say *"<one-sentence voice command that uses the new tool>"*.
+
+Destructive tools may ask for approval the first time, which is expected. If the server
+doesn't connect, point them at the troubleshooting section in
 [references/glaido-integration.md](references/glaido-integration.md) (the usual causes are an
 unset key, a moved folder, or stray stdout output).
 

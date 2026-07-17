@@ -60,9 +60,9 @@ so a first-time user's first run cannot fail on credentials. **Copy it, don't re
    `git clone https://github.com/daveebbelaar/glaido-skills.git`.
 2. **Check the runtime.** The server runs via `uv` - do the Step 2 runtime check and install
    it if missing ([references/installing-runtimes.md](references/installing-runtimes.md)).
-3. **Fix the path.** In the copied folder's `mcp.json`, replace
-   `/ABSOLUTE/PATH/TO/hello-world-weather` with the folder's real absolute path.
-4. **Validate and hand off** as usual (Steps 7 and 8). There are no keys to set.
+3. **Validate and hand off** as usual (Steps 7 and 8). There are no keys to set and no paths
+   to edit: the example's `mcp.json` is path-free, and Glaido runs the server from whatever
+   folder the user imports.
 
 The example doubles as reference code for custom builds: one small server, clearly described
 tools, typed arguments, structured returns, correct annotations, nothing on stdout.
@@ -229,6 +229,11 @@ The essentials:
   it might not be, use an absolute path to the binary.
 - **Every path must be absolute.** Relative paths are not expanded. Generate the real path with
   `pwd` in the server folder and substitute it - don't leave the placeholder.
+- **Exception: folders the user imports may omit paths entirely.** On import, the current
+  Glaido beta sets the server's working directory to the imported folder, so
+  `"command": "uv", "args": ["run", "server.py"]` works with no path anywhere (this is how
+  the hello-world example ships). Absolute paths remain the safest default for generated
+  servers; use the path-free form when the folder is definitely imported via the Tools page.
 - The key (`"My Server"`) is the display name; Glaido derives a clean ID from it.
 - **Windows:** `npx` and `npm` are `.cmd` batch shims, which Windows cannot launch directly -
   Glaido will fail to start them even though they work in your terminal. Wrap them in `cmd`:

@@ -26,13 +26,12 @@ to stdout and will break the connection - move it to stderr.
 ## Import into Glaido
 
 1. Put this folder somewhere it will stay put (for example `~/glaido-mcp-servers/hello-world-weather`).
-2. Open `mcp.json` and replace `/ABSOLUTE/PATH/TO/hello-world-weather` with this folder's
-   real absolute path (run `pwd` inside the folder to get it).
-3. Open **Glaido → Tools**, click **Import**, and select this folder.
-4. Enable the server with its toggle.
-5. Open Agent Mode and ask: *"What's the weather in Amsterdam?"*
+2. Open **Glaido → Tools**, click **Import**, and select this folder.
+3. Enable the server with its toggle.
+4. Open Agent Mode and ask: *"What's the weather in Amsterdam?"*
 
-> The path in `mcp.json` is absolute. If you move this folder, update that path and re-import.
+No paths to edit: the `mcp.json` contains none, and Glaido runs the server from the folder
+you imported. If you move the folder later, just import it again.
 
 ## Make it yours
 

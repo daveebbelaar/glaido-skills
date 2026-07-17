@@ -87,8 +87,8 @@ examples/
 
 - [`examples/hello-world-weather`](examples/hello-world-weather/) - the simplest useful
   Glaido tool: current weather for any city via the free Open-Meteo API. No API key, no
-  `.env`, nothing to sign up for. Copy it, set the absolute path in `mcp.json`, import it,
-  and ask Glaido *"What's the weather in Amsterdam?"*
+  `.env`, nothing to sign up for, no paths to edit. Import the folder on Glaido's Tools
+  page as-is and ask *"What's the weather in Amsterdam?"*
 
 ## Links
 

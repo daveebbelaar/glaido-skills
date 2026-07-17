@@ -115,7 +115,7 @@ A clean combination: non-secret config in the `env` block, secrets in `.env`.
 
 Tell the user to:
 
-1. Open **Glaido → Settings → MCP Servers**.
+1. Open **Glaido → Tools** (in the sidebar under Agent).
 2. Click **Import**.
 3. Select the **folder** that contains `mcp.json` (select the folder, not the file).
 4. The server shows up in the list; toggle it on to enable it.

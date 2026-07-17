@@ -1,0 +1,15 @@
+{
+  "mcpServers": {
+    "Hello World Weather": {
+      "type": "stdio",
+      "command": "uv",
+      "args": [
+        "--directory",
+        "/ABSOLUTE/PATH/TO/hello-world-weather",
+        "run",
+        "server.py"
+      ],
+      "env": {}
+    }
+  }
+}

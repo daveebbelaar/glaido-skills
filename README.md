@@ -8,6 +8,22 @@ Code, Cursor, Codex, and others) load on demand to do a specific job well. The s
 repository teach your agent how to extend and integrate with Glaido, so you can say "make
 Glaido able to send Slack messages" and get a working result.
 
+## Quick start: your first tool
+
+You don't need to clone anything or write any code. Copy this prompt into your coding agent
+(Claude Code, Cursor, Codex, or any other) and let it do the rest:
+
+> I'm setting up Tools for the Glaido dictation app. Read this guide and follow the
+> instructions for coding agents: https://docs.glaido.com/docs/beta/tools
+>
+> Build the hello-world weather example from the guide (current weather for any city, using
+> the free Open-Meteo API, no API key needed). When you're done, tell me the exact folder to
+> pick when I click Import on Glaido's Tools page.
+
+The agent fetches the skill from this repository, copies the ready-made
+[hello-world weather server](examples/hello-world-weather/), and hands you a folder to import
+on Glaido's Tools page. Then describe the tool you actually want, the same way.
+
 ## Available skills
 
 - [`creating-glaido-mcp-servers`](creating-glaido-mcp-servers/) - Build a local MCP server
@@ -59,7 +75,16 @@ creating-glaido-mcp-servers/
     ├── references/         # Deep-dive docs the skill links to
     ├── scripts/            # Validation tooling
     └── assets/templates/   # Copyable starter projects
+examples/
+    └── hello-world-weather/  # Ready-to-import first tool (no API key)
 ```
+
+## Examples
+
+- [`examples/hello-world-weather`](examples/hello-world-weather/) - the simplest useful
+  Glaido tool: current weather for any city via the free Open-Meteo API. No API key, no
+  `.env`, nothing to sign up for. Copy it, set the absolute path in `mcp.json`, import it,
+  and ask Glaido *"What's the weather in Amsterdam?"*
 
 ## Links
 

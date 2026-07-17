@@ -40,8 +40,32 @@ for it.** Do not reinvent it. Go to Step 1A.
 **B. Building a custom server** around the user's own API, script, business logic, or local
 machine actions → there's nothing to reuse. Go to Step 1B.
 
+**C. The user asks for the "hello-world weather example"** (Glaido's first-tool walkthrough
+in the app and docs sends people here) → don't generate anything. Use the prebuilt folder;
+see "The hello-world example" just below.
+
 If it's ambiguous (e.g. "I want Glaido to manage my tasks"), ask one quick question: are they
 using a known product (reuse) or their own system (build)?
+
+## The hello-world example
+
+A complete, working first tool lives at
+[examples/hello-world-weather/](../examples/hello-world-weather/) in this repository: current
+weather for any city via the free Open-Meteo API. No API key, no signup, no `.env`. It exists
+so a first-time user's first run cannot fail on credentials. **Copy it, don't regenerate it.**
+
+1. **Get the folder.** If this repository is already cloned, copy
+   `examples/hello-world-weather/` to a stable location (e.g.
+   `~/glaido-mcp-servers/hello-world-weather`). Otherwise clone it first:
+   `git clone https://github.com/daveebbelaar/glaido-skills.git`.
+2. **Check the runtime.** The server runs via `uv` - do the Step 2 runtime check and install
+   it if missing ([references/installing-runtimes.md](references/installing-runtimes.md)).
+3. **Fix the path.** In the copied folder's `mcp.json`, replace
+   `/ABSOLUTE/PATH/TO/hello-world-weather` with the folder's real absolute path.
+4. **Validate and hand off** as usual (Steps 7 and 8). There are no keys to set.
+
+The example doubles as reference code for custom builds: one small server, clearly described
+tools, typed arguments, structured returns, correct annotations, nothing on stdout.
 
 ## Step 1A - Reuse path: find an existing server first
 
@@ -230,7 +254,7 @@ Give the user these steps (and fill in the real folder name and keys):
 
 1. Set your secrets: open `<folder>/.env` and fill in the real values (copy from
    `.env.example` if `.env` doesn't exist yet).
-2. Open **Glaido → Settings → MCP Servers**.
+2. Open **Glaido → Tools** (in the sidebar under Agent).
 3. Click **Import** and select the `<folder>` you just created.
 4. The server appears in the list - enable it with its toggle.
 5. The agent can now use its tools. Destructive tools may ask for approval the first time,
@@ -251,3 +275,4 @@ unset key, a moved folder, or stray stdout output).
 | Go / Rust / Java / C# / other | [references/other-languages.md](references/other-languages.md) |
 | Reusing an existing third-party server | [references/existing-servers.md](references/existing-servers.md) |
 | Copyable starter files | [assets/templates/](assets/templates/) |
+| Ready-made first tool (weather, no API key) | [examples/hello-world-weather/](../examples/hello-world-weather/) |

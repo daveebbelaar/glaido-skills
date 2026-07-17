@@ -26,7 +26,7 @@ _Replace this list with the real tools._
 ## Import into Glaido
 
 1. Fill in `.env` and run `npm run build`.
-2. Open **Glaido → Settings → MCP Servers**.
+2. Open **Glaido → Tools** (in the sidebar under Agent).
 3. Click **Import** and select this folder.
 4. Enable the server with its toggle.
 

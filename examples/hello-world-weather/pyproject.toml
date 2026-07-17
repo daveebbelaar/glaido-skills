@@ -1,0 +1,10 @@
+[project]
+name = "glaido-mcp-hello-world-weather"
+version = "0.1.0"
+description = "Hello World weather MCP server for Glaido - current weather for any city, no API key."
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "mcp[cli]",
+    "httpx",
+]

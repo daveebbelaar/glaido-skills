@@ -270,11 +270,12 @@ End your final message with exactly this structure:
 1. *(only if the server needs keys)* Open `<folder>/.env` and fill in the real values
    (copy from `.env.example` if `.env` doesn't exist yet).
 2. Open the **Glaido** app and click **Tools** in the sidebar, under **Agent**.
-   If there is no Tools item, first enable **Settings → Preferences → Enable beta features**.
-3. Click **Import** (top right) and select the **entire folder** `<folder>` - the folder
-   itself, not a file inside it.
-4. The server appears in the list - switch its toggle on.
-5. Try it: open Agent Mode and say *"<one-sentence voice command that uses the new tool>"*.
+3. Click **Import** (top right). Your file browser opens (Finder on macOS, File Explorer
+   on Windows).
+4. Navigate to `<folder>` and select the **whole folder** - the folder itself, not a file
+   inside it - then confirm with **Open**.
+5. The server appears in the list - switch its toggle on.
+6. Try it: open Agent Mode and say *"<one-sentence voice command that uses the new tool>"*.
 
 Destructive tools may ask for approval the first time, which is expected. If the server
 doesn't connect, point them at the troubleshooting section in

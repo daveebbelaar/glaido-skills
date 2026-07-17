@@ -17,8 +17,9 @@ You don't need to clone anything or write any code. Copy this prompt into your c
 > instructions for coding agents: https://docs.glaido.com/docs/beta/tools
 >
 > Build the hello-world weather example from the guide (current weather for any city, using
-> the free Open-Meteo API, no API key needed). When you're done, tell me the exact folder to
-> pick when I click Import on Glaido's Tools page.
+> the free Open-Meteo API, no API key needed). It's a fixed demo: just run the commands from
+> the guide without planning or questions, then tell me the exact folder to pick when I
+> click Import on Glaido's Tools page.
 
 The agent fetches the skill from this repository, copies the ready-made
 [hello-world weather server](examples/hello-world-weather/), and hands you a folder to import

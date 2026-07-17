@@ -56,8 +56,9 @@ weather for any city via the free Open-Meteo API. No API key, no signup, no `.en
 **This is a fixed demo with exactly one correct outcome. There are no design decisions to
 make, no alternatives to weigh, and no approval to ask for. Do not propose folder locations,
 do not offer options, do not regenerate or modify any file, and do not pause for
-confirmation - run the steps below exactly and report the result.** The whole thing should
-take well under a minute.
+confirmation - run the steps below exactly and report the result.** The validator boot-tests
+the server, so do not add verification steps of your own. The whole thing should take well
+under a minute.
 
 1. **Copy the example to the canonical location** (`~/Glaido/glaido-mcp-servers/hello-world-weather`).
    If this repository is already on disk (skill installed or repo cloned), copy from there;
@@ -75,12 +76,14 @@ take well under a minute.
 2. **Ensure `uv` is installed** - the only permitted branch: if `command -v uv` (Windows:
    `where uv`) finds nothing, install it per
    [references/installing-runtimes.md](references/installing-runtimes.md).
-3. **Validate**, using this skill's checker:
+3. **Validate**, using this skill's checker (from the clone above, or this skill's own
+   `scripts/` folder if installed locally):
 
    ```bash
-   python3 <path-to-this-skill>/scripts/validate_glaido_mcp.py ~/Glaido/glaido-mcp-servers/hello-world-weather
+   python3 "$TMP/glaido-skills/creating-glaido-mcp-servers/scripts/validate_glaido_mcp.py" ~/Glaido/glaido-mcp-servers/hello-world-weather
    ```
 
+   "Ready to import" means done - the validator already boot-tests the server.
 4. **Hand off** per Step 8. There are no keys to set and no paths to edit: the example's
    `mcp.json` is path-free, and Glaido runs the server from whatever folder the user
    imports. For the hand-off's try-it step, use *"What's the weather in Amsterdam?"*
